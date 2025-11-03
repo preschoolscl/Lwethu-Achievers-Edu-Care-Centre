@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lwethu Achievers Edu Care Centre</title>
+
+  <!-- ✅ Reliable Tailwind CDN (standalone build) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Optional theme setup -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal: {
+              50: '#E6FFFA',
+              600: '#0D9488',
+              700: '#0F766E'
+            },
+            orange: {
+              50: '#FFF7ED',
+              100: '#FFEDD5',
+              300: '#FDBA74'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="icon" href="logo.jpg">
+</head>
+
+
+<body class="bg-teal-50 text-gray-800 flex flex-col min-h-screen">
+
+<!-- Header -->
+<header class="bg-white shadow-md fixed w-full top-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-2">
+      <img src="logo.jpg" alt="Olwethu Logo" class="w-10 h-10 rounded-full">
+      <h1 class="text-lg font-bold text-teal-600">Olwethu Pre-School</h1>
+    </div>
+    <nav class="hidden md:flex space-x-8 text-gray-700 font-semibold">
+      <a href="#hero" class="hover:text-teal-600">Home</a>
+      <a href="gallery.html" class="hover:text-teal-600">Gallery</a>
+      <a href="#apply" class="hover:text-teal-600">Apply</a>
+      <a href="#footer" class="hover:text-teal-600">Contact</a>
+    </nav>
+    <button id="menu-btn" class="block md:hidden text-teal-600 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+           viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+<nav id="mobile-menu"
+     class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50 md:hidden">
+  <div class="p-6 flex flex-col h-full">
+    <button id="close-btn" class="self-end text-teal-600 mb-6 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+           viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <nav class="flex flex-col space-y-4 text-gray-700 font-semibold">
+      <a href="#hero" class="hover:text-teal-600">Home</a>      
+      <a href="gallery.html" class="hover:text-teal-600">Gallery</a>
+      <a href="#apply" class="hover:text-teal-600">Apply</a>
+      <a href="#footer" class="hover:text-teal-600">Contact</a>
+    </nav>
+
+    <div class="mt-auto text-center text-sm text-gray-400">
+      © 2025 Olwethu Pre-School
+    </div>
+  </div>
+</nav>
+
+<div class="mt-24"></div>
+
+<!-- ✅ Hero Section -->
+<section id="hero" 
+  class="relative flex flex-col justify-center items-center text-center py-20 text-white px-6 bg-cover bg-center bg-no-repeat"
+  style="background-image: url('gallery/hero.jpg'); background-color: rgba(0,0,0,0.5); background-blend-mode: multiply;">
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <div class="relative z-10">
+    <img src="logo.jpg" alt="Logo" class="w-28 mb-6 mx-auto animate-bounce rounded-full shadow-lg border-4 border-white">
+    <h2 class="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-lg">
+      Growing Bright Minds with Care & Joy
+    </h2>
+    <p class="max-w-2xl mx-auto text-lg mb-8 drop-shadow-md">
+      Where learning meets love — helping your child thrive every single day!
+    </p>
+    <a href="#apply" class="bg-white text-teal-600 font-bold py-3 px-8 rounded-full hover:bg-orange-100 transition">
+      Apply Now
+    </a>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services" class="py-16 px-6 md:px-12 bg-white">
+  <h2 class="text-3xl font-bold text-center text-teal-600 mb-12">Our Services</h2>
+  <div class="grid md:grid-cols-3 gap-8">
+    <div class="bg-teal-50 p-6 rounded-2xl shadow hover:shadow-xl transition text-center">
+      <img src="services/daycare.jpg" alt="Day Care" class="w-full h-40 object-cover rounded-xl mb-4">
+      <h3 class="text-xl font-bold mb-2 text-teal-700">Day Care</h3>
+      <p>Safe and nurturing care for children aged 3 months to 4 years.</p>
+    </div>
+    <div class="bg-orange-50 p-6 rounded-2xl shadow hover:shadow-xl transition text-center">
+      <img src="services/learning.jpg" alt="Learning" class="w-full h-40 object-cover rounded-xl mb-4">
+      <h3 class="text-xl font-bold mb-2 text-orange-600">Early Learning</h3>
+      <p>Engaging lessons that spark curiosity and build confidence.</p>
+    </div>
+    <div class="bg-green-50 p-6 rounded-2xl shadow hover:shadow-xl transition text-center">
+      <img src="services/meals.jpg" alt="Healthy Meals" class="w-full h-40 object-cover rounded-xl mb-4">
+      <h3 class="text-xl font-bold mb-2 text-green-600">Healthy Meals</h3>
+      <p>Nutritious daily meals that keep our learners energized and happy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Apply Section -->
+<section id="apply" class="py-16 px-6 bg-teal-50 text-center">
+  <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-md">
+    <h2 class="text-2xl font-bold text-teal-600 mb-8">Apply for 2025 Admission</h2>
+    <p>Click below to complete the application form and join the Olwethu family!</p>
+    <a href="application.html" class="inline-block mt-6 bg-teal-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-teal-700 transition">Open Form</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-teal-700 text-white py-10 mt-auto">
+  <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left px-6 gap-10">
+    <div>
+      <img src="logo.jpg" alt="Logo" class="w-20 mx-auto md:mx-0 mb-4 rounded-full border-2 border-white">
+      <h3 class="text-lg font-bold mb-2">Lwethu Achievers Edu Care Centre</h3>
+      <p>3 Tladi street,ext 2 Thokoza Alberton 1426
+</p>
+      <p>Tel: 081 762 6072| 063 775 5343
+</p>
+      <p>Email: lwethuachievers@gmail.com</p>
+    </div>
+    <div>
+      <h3 class="text-lg font-bold mb-3">Follow Us</h3>
+      <div class="flex flex-col items-center md:items-start space-y-3">
+        <a href="#" class="flex items-center gap-2 hover:text-orange-300"><i data-lucide="facebook"></i> Facebook</a>
+        <a href="#" class="flex items-center gap-2 hover:text-orange-300"><i data-lucide="instagram"></i> Instagram</a>
+        <a href="#" class="flex items-center gap-2 hover:text-orange-300"><i data-lucide="twitter"></i> Twitter</a>
+      </div>
+    </div>
+    <div>
+      <h3 class="text-lg font-bold mb-3">Find Us</h3>
+      <iframe class="w-64 h-48 rounded-lg" src="https://www.google.com/maps?q=Katlehong+Germiston&output=embed"></iframe>
+    </div>
+  </div>
+  <p class="text-center mt-8 text-sm">© 2025 Lwethu Achievers Edu Care Centre. All rights reserved.</p>
+</footer>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/27817626072" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition">
+  <i data-lucide="message-circle" class="w-6 h-6"></i>
+</a>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const closeBtn = document.getElementById('close-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const overlay = document.getElementById('overlay');
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.remove('translate-x-full');
+    overlay.classList.remove('hidden');
+  });
+  const closeMenu = () => {
+    mobileMenu.classList.add('translate-x-full');
+    overlay.classList.add('hidden');
+  };
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox.min.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>
