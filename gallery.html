@@ -102,27 +102,31 @@
 <section class="py-16 px-6 md:px-12 bg-white">
   <h2 class="text-3xl font-bold text-center text-teal-600 mb-12">Gallery</h2>
 
-  <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-    <a href="gallery/1.jpg" data-lightbox="olwethu-gallery">
-      <img src="gallery/1.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-xl shadow hover:scale-105 transform transition">
-    </a>
-    <a href="gallery/2.jpg" data-lightbox="olwethu-gallery">
-      <img src="gallery/2.jpg" alt="Gallery 2" class="w-full h-64 object-cover rounded-xl shadow hover:scale-105 transform transition">
-    </a>
-    <a href="gallery/3.jpg" data-lightbox="olwethu-gallery">
-      <img src="gallery/3.jpg" alt="Gallery 3" class="w-full h-64 object-cover rounded-xl shadow hover:scale-105 transform transition">
-    </a>
-    <a href="gallery/4.jpg" data-lightbox="olwethu-gallery">
-      <img src="gallery/4.jpg" alt="Gallery 4" class="w-full h-64 object-cover rounded-xl shadow hover:scale-105 transform transition">
-    </a>
-    <a href="gallery/5.jpg" data-lightbox="olwethu-gallery">
-      <img src="gallery/5.jpg" alt="Gallery 5" class="w-full h-64 object-cover rounded-xl shadow hover:scale-105 transform transition">
-    </a>
-    <a href="gallery/6.jpg" data-lightbox="olwethu-gallery">
-      <img src="gallery/6.jpg" alt="Gallery 6" class="w-full h-64 object-cover rounded-xl shadow hover:scale-105 transform transition">
-    </a>
+  <div id="gallery-grid" class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+    <!-- Images will be inserted here dynamically -->
   </div>
 </section>
+
+<script>
+  // Total number of images
+  const totalImages = 20; 
+  const galleryGrid = document.getElementById('gallery-grid');
+
+  for (let i = 1; i <= totalImages; i++) {
+    const anchor = document.createElement('a');
+    anchor.href = `gallery/${i}.jpg`;
+    anchor.setAttribute('data-lightbox', 'olwethu-gallery');
+
+    const img = document.createElement('img');
+    img.src = `gallery/${i}.jpg`;
+    img.alt = `Gallery ${i}`;
+    img.className = 'w-full h-64 object-cover rounded-xl shadow hover:scale-105 transform transition';
+
+    anchor.appendChild(img);
+    galleryGrid.appendChild(anchor);
+  }
+</script>
+
 
 <!-- Footer -->
 <footer id="footer" class="bg-teal-700 text-white py-10 mt-auto">
@@ -174,3 +178,4 @@
 <script>lucide.createIcons();</script>
 </body>
 </html>
+
