@@ -87,13 +87,28 @@
 </nav>
 
 <div class="mt-24"></div>
+
 <!-- ✅ Hero Section -->
 <section id="hero" 
   class="relative flex flex-col justify-center items-center text-center text-white px-6 bg-cover bg-center bg-no-repeat min-h-screen"
-  style="background-image: url('gallery/hero2.jpg'); background-color: rgba(0,0,0,0.5); background-blend-mode: multiply;">
+  style="background-image: url('gallery/hero2.jpg'); background-color: rgba(0,0,0,0.25); background-blend-mode: multiply;">
   
-  <!-- Dark overlay -->
-  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <!-- Light overlay (optional) -->
+  <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">
+      Growing Bright Minds with Care & Joy
+    </h1>
+    <p class="text-lg md:text-xl mb-6 drop-shadow">
+      Where learning meets love — helping your child thrive every single day!
+    </p>
+    <a href="apply.html" class="bg-white text-teal-700 font-bold py-3 px-6 rounded-full hover:bg-teal-600 hover:text-white transition">
+      Apply Now
+    </a>
+  </div>
+</section>
+
   
   <!-- Content -->
   <div class="relative z-10 max-w-4xl">
@@ -265,6 +280,7 @@
 <script>lucide.createIcons();</script>
 </body>
 </html>
+
 
 
 
