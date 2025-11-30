@@ -1,0 +1,40 @@
+name: Generate Gallery JSON
+
+on:
+  push:
+    paths:
+      - 'gallery/**'
+      - '.github/workflows/generate-gallery.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Generate images.json
+      run: |
+        echo "[" > gallery/images.json
+        files=$(ls gallery | grep -E "\.(jpg|jpeg|png|gif|webp)$")
+        count=$(echo "$files" | wc -l)
+        i=1
+        for file in $files; do
+          if [ $i -eq $count ]; then
+            echo "  \"${file}\"" >> gallery/images.json
+          else
+            echo "  \"${file}\"," >> gallery/images.json
+          fi
+          i=$((i+1))
+        done
+        echo "]" >> gallery/images.json
+
+    - name: Commit changes
+      run: |
+        git config user.name "GitHub Action"
+        git config user.email "action@github.com"
+        git add gallery/images.json
+        git commit -m "Auto-update gallery images.json" || echo "No changes"
+        git push
