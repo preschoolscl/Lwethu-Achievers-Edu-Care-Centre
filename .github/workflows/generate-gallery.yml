@@ -17,12 +17,30 @@ jobs:
 
       - name: Generate images.json
         run: |
-          FILES=$(ls gallery/images | grep -E "\.(jpg|jpeg|png|gif)$")
+          mkdir -p gallery            # ensure folder exists
+          mkdir -p gallery/images     # ensure images folder exists
+
+          # Start JSON array
           echo "[" > gallery/images.json
-          for f in $FILES; do
-            echo "  \"${f}\"," >> gallery/images.json
+
+          # Loop through all valid image files
+          for f in gallery/images/*.{jpg,jpeg,png,gif}; do
+            [ -e "$f" ] || continue
+
+            filename=$(basename "$f")
+            thumb="thumb-$filename"
+
+            # Add entry to JSON
+            echo "  {" >> gallery/images.json
+            echo "    \"thumb\": \"images/$thumb\"," >> gallery/images.json
+            echo "    \"full\": \"images/$filename\"" >> gallery/images.json
+            echo "  }," >> gallery/images.json
           done
+
+          # Remove last comma
           sed -i '$ s/,$//' gallery/images.json
+
+          # Close JSON array
           echo "]" >> gallery/images.json
 
       - name: Commit changes
@@ -30,5 +48,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add gallery/images.json
-          git commit -m "Update images.json automatically" || exit 0
+          git commit -m "Auto-generate images.json" || exit 0
           git push
