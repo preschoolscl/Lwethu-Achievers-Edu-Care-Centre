@@ -1,52 +1,34 @@
-name: Generate Gallery Data
+name: Generate Gallery JSON
 
 on:
   push:
-    branches: [ main ]
     paths:
       - "gallery/images/**"
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install -y imagemagick
-
-      - name: Generate thumbnails
+      - name: Generate images.json
         run: |
-          mkdir -p gallery/thumbs
-          for file in gallery/images/*.{jpg,jpeg,png,JPG,JPEG,PNG}; do
-            [ -f "$file" ] || continue
-            filename=$(basename "$file")
-            convert "$file" -thumbnail 400x400 "gallery/thumbs/$filename"
-          done
-
-      - name: Build images.json
-        run: |
+          FILES=$(ls gallery/images | grep -E "\.(jpg|jpeg|png|gif)$")
           echo "[" > gallery/images.json
-          first=true
-          for file in gallery/images/*.{jpg,jpeg,png,JPG,JPEG,PNG}; do
-            [ -f "$file" ] || continue
-            filename=$(basename "$file")
-            if [ "$first" = true ]; then
-              first=false
-            else
-              echo "," >> gallery/images.json
-            fi
-            echo "  {\"full\": \"images/$filename\", \"thumb\": \"thumbs/$filename\"}" >> gallery/images.json
+          for f in $FILES; do
+            echo "  \"${f}\"," >> gallery/images.json
           done
+          sed -i '$ s/,$//' gallery/images.json
           echo "]" >> gallery/images.json
 
-      - name: Commit results
+      - name: Commit changes
         run: |
-          git config user.name "GitHub Actions"
+          git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add gallery/images.json gallery/thumbs
-          git diff-index --quiet HEAD || git commit -m "Update gallery data"
+          git add gallery/images.json
+          git commit -m "Update images.json automatically" || exit 0
           git push
