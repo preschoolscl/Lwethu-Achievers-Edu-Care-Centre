@@ -92,7 +92,7 @@
 
 <!-- Hero Banner -->
 <section class="relative py-20 text-center text-white bg-cover bg-center"
-         style="background-image: url('gallery/10.jpg');">
+         style="background-image: url('gallery/10.jpeg');">
   <div class="absolute inset-0 bg-black bg-opacity-60"></div>
   <div class="relative z-10">
     <h2 class="text-4xl font-bold mb-4">Our Happy Moments</h2>
@@ -161,7 +161,7 @@
     // Dynamically create gallery
     for (let i = 1; i <= totalImages; i++) {
       const link = document.createElement('a');
-      link.href = `gallery/${i}.jpg`;
+      link.href = `gallery/${i}.jpeg`;
       link.setAttribute('data-lightbox', 'lwethu-gallery');
       link.setAttribute('data-title', `Gallery Image ${i}`);
 
@@ -169,7 +169,7 @@
       wrapper.className = 'w-full h-64 bg-white rounded-xl shadow-md overflow-hidden flex items-center justify-center';
 
       const img = document.createElement('img');
-      img.src = `gallery/${i}.jpg`;
+      img.src = `gallery/${i}.jpeg`;
       img.loading = 'lazy';
       img.alt = `Gallery Image ${i}`;
       img.className = 'object-cover w-full h-full hover:scale-105 transform transition duration-300';
@@ -216,6 +216,7 @@
 
 </body>
 </html>
+
 
 
 
