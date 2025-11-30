@@ -3,222 +3,187 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lwethu Achievers Edu Care Centre - Gallery</title>
 
-  <!-- ✅ Tailwind CSS -->
+  <title>Lwethu Gallery</title>
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <!-- TAILWIND CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            teal: {
-              50: '#E6FFFA',
-              600: '#0D9488',
-              700: '#0F766E'
-            },
-            orange: {
-              50: '#FFF7ED',
-              100: '#FFEDD5',
-              300: '#FDBA74'
-            }
-          }
-        }
-      }
+
+  <!-- LIGHTBOX CSS -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* Fade-in + scale animation */
+    .fade-in {
+      opacity: 0;
+      transform: scale(0.98);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
-  </script>
+    .fade-in.loaded {
+      opacity: 1;
+      transform: scale(1);
+    }
 
-  <!-- ✅ Lightbox2 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css" rel="stylesheet">
-
-  <!-- ✅ Lucide icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  <link rel="icon" href="logo.jpg">
+    /* Blur-up effect */
+    .blur-up {
+      filter: blur(10px);
+      transition: filter 0.7s ease;
+    }
+    .blur-up.loaded {
+      filter: blur(0);
+    }
+  </style>
 </head>
 
-<body class="bg-teal-50 text-gray-800 flex flex-col min-h-screen">
+<body class="bg-gray-50">
 
-<!-- Header -->
-<header class="bg-white shadow-md fixed w-full top-0 z-50">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <div class="flex items-center space-x-2">
-      <img src="logo.jpg" alt="Olwethu Logo" class="w-10 h-10 rounded-full">
-      <h1 class="text-lg font-bold text-teal-600">Lwethu Achievers Edu Care Centre</h1>
+  <!-- ==========================
+       🔵 NAVIGATION BAR
+  =========================== -->
+  <header class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <h1 class="text-xl font-bold">Lwethu Gallery</h1>
+
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex gap-6 text-gray-700">
+        <a href="index.html" class="hover:text-black">Home</a>
+        <a href="about.html" class="hover:text-black">About</a>
+        <a href="contact.html" class="hover:text-black">Contact</a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button id="menu-btn" class="md:hidden">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
     </div>
-    <nav class="hidden md:flex space-x-8 text-gray-700 font-semibold">
-      <a href="index.html" class="hover:text-teal-600">Home</a>
-      <a href="gallery.html" class="text-teal-600 font-bold">Gallery</a>
-      <a href="index.html#apply" class="hover:text-teal-600">Apply</a>
-      <a href="index.html#footer" class="hover:text-teal-600">Contact</a>
+  </header>
+
+  <!-- Overlay -->
+  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-40 hidden z-40"></div>
+
+  <!-- Mobile Menu -->
+  <aside
+    id="mobile-menu"
+    class="fixed top-0 right-0 w-64 h-full bg-white shadow-lg z-50 transform translate-x-full transition"
+  >
+    <div class="p-4 flex justify-between items-center border-b">
+      <h2 class="text-lg font-semibold">Menu</h2>
+      <button id="close-btn">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <nav class="p-4 flex flex-col gap-4 text-gray-700">
+      <a href="index.html" class="hover:text-black">Home</a>
+      <a href="about.html" class="hover:text-black">About</a>
+      <a href="contact.html" class="hover:text-black">Contact</a>
     </nav>
-    <button id="menu-btn" class="block md:hidden text-teal-600 focus:outline-none">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
-           viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round"
-              d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
-  </div>
-</header>
+  </aside>
 
-<!-- Mobile Menu -->
-<div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
-<nav id="mobile-menu"
-     class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50 md:hidden">
-  <div class="p-6 flex flex-col h-full">
-    <button id="close-btn" class="self-end text-teal-600 mb-6 focus:outline-none">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
-           viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round"
-              d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
+  <div class="pt-24"></div>
 
-    <nav class="flex flex-col space-y-4 text-gray-700 font-semibold">
-      <a href="index.html#hero" class="hover:text-teal-600">Home</a>
-      <a href="gallery.html" class="text-teal-600 font-bold">Gallery</a>
-      <a href="index.html#apply" class="hover:text-teal-600">Apply</a>
-      <a href="index.html#footer" class="hover:text-teal-600">Contact</a>
-    </nav>
+  <!-- ==========================
+       🔵 GALLERY
+  =========================== -->
+  <div class="max-w-6xl mx-auto p-4">
+    <h2 class="text-3xl font-bold mb-8 text-center">Image Gallery</h2>
 
-    <div class="mt-auto text-center text-sm text-gray-400">
-      © 2025 Olwethu Pre-School
+    <div id="gallery-grid"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
     </div>
   </div>
-</nav>
 
-<div class="mt-24"></div>
-
-<!-- Hero Banner -->
-<section class="relative py-20 text-center text-white bg-cover bg-center"
-         style="background-image: url('gallery/10.jpg');">
-  <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-  <div class="relative z-10">
-    <h2 class="text-4xl font-bold mb-4">Our Happy Moments</h2>
-    <p class="max-w-2xl mx-auto text-lg">A glimpse into the fun, learning, and love at Lwethu Achievers Edu Care Centre.</p>
-  </div>
-</section>
-
-<!-- ✅ Dynamic Gallery Section -->
-<section class="max-w-6xl mx-auto py-16 px-6">
-  <h2 class="text-3xl font-bold text-center mb-10 text-teal-700">Gallery</h2>
-  <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
-</section>
-
-<!-- Footer -->
-<footer id="footer" class="bg-teal-700 text-white py-10 mt-auto">
-  <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left px-6 gap-10">
-    <div>
-      <img src="logo.jpg" alt="Logo" class="w-20 mx-auto md:mx-0 mb-4 rounded-full border-2 border-white">
-      <h3 class="text-lg font-bold mb-2">Lwethu Achievers Edu Care Centre</h3>
-      <p>3 Tladi street, ext 2 Thokoza Alberton 1426</p>
-      <p>Tel: 081 762 6072 | 063 775 5343</p>
-      <p>Email: lwethuachievers@gmail.com</p>
+  <!-- ==========================
+       🔵 FOOTER
+  =========================== -->
+  <footer class="bg-white mt-16 py-6 shadow-inner">
+    <div class="max-w-6xl mx-auto text-center text-gray-600">
+      <p>&copy; 2025 Lwethu Gallery. All rights reserved.</p>
+      <p class="mt-2 text-sm">Powered by VerbaTek Freelance</p>
     </div>
-    <div>
-      <h3 class="text-lg font-bold mb-3">Follow Us</h3>
-    <div class="flex flex-col items-center md:items-start space-y-3">
-  <a href="https://www.facebook.com/groups/706498349877012/?ref=share&mibextid=NSMWBT" 
-     target="_blank" 
-     class="flex items-center gap-2 hover:text-orange-300">
-    <i data-lucide="facebook"></i> Facebook
-  </a>
-  <a href="#" class="flex items-center gap-2 hover:text-orange-300">
-    <i data-lucide="instagram"></i> Instagram
-  </a>
-  <a href="https://www.tiktok.com/@lwethuachievers.e?_r=1&_t=ZS-917Sm4uXtgL" 
-     target="_blank" 
-     class="flex items-center gap-2 hover:text-orange-300">
-    <i data-lucide="tiktok"></i> TikTok
-  </a>
-</div>
+  </footer>
 
-    </div>
-    <div>
-      <h3 class="text-lg font-bold mb-3">Find Us</h3>
-      <iframe class="w-64 h-48 rounded-lg" src="https://www.google.com/maps?q=Katlehong+Germiston&output=embed"></iframe>
-    </div>
-  </div>
-  <p class="text-center mt-8 text-sm">© 2025 Lwethu Achievers Edu Care Centre. All rights reserved.</p>
-</footer>
+  <!-- LIGHTBOX SCRIPT -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
-<!-- WhatsApp Floating Button -->
-<a href="https://wa.me/27817626072" target="_blank"
-   class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition">
-  <i data-lucide="message-circle" class="w-6 h-6"></i>
-</a>
+  <!-- LUCIDE ICONS -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-<!-- ✅ Lightbox2 JS -->
-<script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox-plus-jquery.min.js"></script>
+  <!-- ==========================
+       🔵 GALLERY LOADER SCRIPT
+  =========================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const galleryGrid = document.getElementById("gallery-grid");
 
-<!-- ✅ Dynamic Gallery Loader -->
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const galleryGrid = document.getElementById('gallery-grid');
-    const totalImages = 55; // Change this to the number of images you have
+      // Load images.json generated by GitHub Action
+      fetch("gallery/images.json")
+        .then((res) => res.json())
+        .then((images) => {
+          images.forEach((img) => {
+            const link = document.createElement("a");
+            link.href = `gallery/${img.full}`;
+            link.setAttribute("data-lightbox", "lwethu-gallery");
 
-    // Dynamically create gallery
-    for (let i = 1; i <= totalImages; i++) {
-      const link = document.createElement('a');
-      link.href = `gallery/${i}.jpg`;
-      link.setAttribute('data-lightbox', 'lwethu-gallery');
-      link.setAttribute('data-title', `Gallery Image ${i}`);
+            const wrapper = document.createElement("div");
+            wrapper.className =
+              "w-full h-64 bg-white rounded-xl shadow-md overflow-hidden";
 
-      const wrapper = document.createElement('div');
-      wrapper.className = 'w-full h-64 bg-white rounded-xl shadow-md overflow-hidden flex items-center justify-center';
+            const image = document.createElement("img");
+            image.src = `gallery/${img.thumb}`;
+            image.loading = "lazy";
+            image.className =
+              "object-cover w-full h-full fade-in blur-up";
 
-      const img = document.createElement('img');
-      img.src = `gallery/${i}.jpg`;
-      img.loading = 'lazy';
-      img.alt = `Gallery Image ${i}`;
-      img.className = 'object-cover w-full h-full hover:scale-105 transform transition duration-300';
+            image.onload = () => {
+              image.classList.add("loaded");
+            };
 
-      wrapper.appendChild(img);
-      link.appendChild(wrapper);
-      galleryGrid.appendChild(link);
-    }
+            wrapper.appendChild(image);
+            link.appendChild(wrapper);
+            galleryGrid.appendChild(link);
+          });
 
-    // ✅ Initialize Lightbox options after dynamic load
-    lightbox.option({
-      resizeDuration: 300,
-      wrapAround: true,
-      fadeDuration: 300,
-      imageFadeDuration: 300,
-      disableScrolling: true
+          // Lightbox config
+          lightbox.option({
+            resizeDuration: 300,
+            wrapAround: true,
+            fadeDuration: 300,
+            imageFadeDuration: 300,
+            disableScrolling: true,
+          });
+
+          lucide.createIcons();
+        });
+
+      // Mobile menu controls
+      const menuBtn = document.getElementById("menu-btn");
+      const closeBtn = document.getElementById("close-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const overlay = document.getElementById("overlay");
+
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.remove("translate-x-full");
+        overlay.classList.remove("hidden");
+      });
+
+      closeBtn.addEventListener("click", () => {
+        mobileMenu.classList.add("translate-x-full");
+        overlay.classList.add("hidden");
+      });
+
+      overlay.addEventListener("click", () => {
+        mobileMenu.classList.add("translate-x-full");
+        overlay.classList.add("hidden");
+      });
     });
-
-    // ✅ Initialize Lucide icons
-    lucide.createIcons();
-
-    // ✅ Mobile menu toggle
-    const menuBtn = document.getElementById('menu-btn');
-    const closeBtn = document.getElementById('close-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const overlay = document.getElementById('overlay');
-
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.remove('translate-x-full');
-      overlay.classList.remove('hidden');
-    });
-
-    closeBtn.addEventListener('click', () => {
-      mobileMenu.classList.add('translate-x-full');
-      overlay.classList.add('hidden');
-    });
-
-    overlay.addEventListener('click', () => {
-      mobileMenu.classList.add('translate-x-full');
-      overlay.classList.add('hidden');
-    });
-  });
-</script>
+  </script>
 
 </body>
 </html>
-
-
-
-
-
-
