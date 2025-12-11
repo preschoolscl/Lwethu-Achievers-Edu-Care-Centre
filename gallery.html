@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lwethu Achievers Edu Care Centre - Gallery</title>
 
-  <!-- ✅ Tailwind CSS -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -16,11 +16,6 @@
               50: '#E6FFFA',
               600: '#0D9488',
               700: '#0F766E'
-            },
-            orange: {
-              50: '#FFF7ED',
-              100: '#FFEDD5',
-              300: '#FDBA74'
             }
           }
         }
@@ -28,10 +23,10 @@
     }
   </script>
 
-  <!-- ✅ Lightbox2 CSS -->
+  <!-- Lightbox2 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css" rel="stylesheet">
 
-  <!-- ✅ Lucide icons -->
+  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <link rel="icon" href="logo.jpg">
@@ -62,21 +57,22 @@
   </div>
 </header>
 
-<!-- Mobile Menu -->
+<!-- Mobile menu -->
 <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+
 <nav id="mobile-menu"
      class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50 md:hidden">
   <div class="p-6 flex flex-col h-full">
     <button id="close-btn" class="self-end text-teal-600 mb-6 focus:outline-none">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
-           viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8"
+           fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round"
               d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
 
     <nav class="flex flex-col space-y-4 text-gray-700 font-semibold">
-      <a href="index.html#hero" class="hover:text-teal-600">Home</a>
+      <a href="index.html" class="hover:text-teal-600">Home</a>
       <a href="gallery.html" class="text-teal-600 font-bold">Gallery</a>
       <a href="index.html#apply" class="hover:text-teal-600">Apply</a>
       <a href="index.html#footer" class="hover:text-teal-600">Contact</a>
@@ -100,17 +96,18 @@
   </div>
 </section>
 
-<!-- ✅ Dynamic Gallery Section -->
+<!-- Gallery -->
 <section class="max-w-6xl mx-auto py-16 px-6">
   <h2 class="text-3xl font-bold text-center mb-10 text-teal-700">Gallery</h2>
   <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
-</section>section>
-  <section class="max-w-6xl mx-auto py-16 px-6">
+</section>
+
+<!-- Videos -->
+<section class="max-w-6xl mx-auto py-16 px-6">
   <h2 class="text-3xl font-bold text-center mb-10 text-teal-700">Videos</h2>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
 
-    <!-- Video 1 -->
     <div class="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer"
          onclick="openVideoModal('gallery/1.mp4')">
       <video class="w-full h-64 object-cover rounded-lg" muted playsinline>
@@ -118,7 +115,6 @@
       </video>
     </div>
 
-    <!-- Video 2 -->
     <div class="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer"
          onclick="openVideoModal('gallery/2.mp4')">
       <video class="w-full h-64 object-cover rounded-lg" muted playsinline>
@@ -126,7 +122,6 @@
       </video>
     </div>
 
-    <!-- Video 3 -->
     <div class="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer"
          onclick="openVideoModal('gallery/3.mp4')">
       <video class="w-full h-64 object-cover rounded-lg" muted playsinline>
@@ -136,7 +131,6 @@
 
   </div>
 </section>
-
 
 <!-- Footer -->
 <footer id="footer" class="bg-teal-700 text-white py-10 mt-auto">
@@ -148,109 +142,114 @@
       <p>Tel: 081 762 6072 | 063 775 5343</p>
       <p>Email: lwethuachievers@gmail.com</p>
     </div>
+
     <div>
       <h3 class="text-lg font-bold mb-3">Follow Us</h3>
-    <div class="flex flex-col items-center md:items-start space-y-3">
-  <a href="https://www.facebook.com/groups/706498349877012/?ref=share&mibextid=NSMWBT" 
-     target="_blank" 
-     class="flex items-center gap-2 hover:text-orange-300">
-    <i data-lucide="facebook"></i> Facebook
-  </a>
-  <a href="#" class="flex items-center gap-2 hover:text-orange-300">
-    <i data-lucide="instagram"></i> Instagram
-  </a>
-  <a href="https://www.tiktok.com/@lwethuachievers.e?_r=1&_t=ZS-917Sm4uXtgL" 
-     target="_blank" 
-     class="flex items-center gap-2 hover:text-orange-300">
-    <i data-lucide="tiktok"></i> TikTok
-  </a>
-</div>
-
+      <div class="flex flex-col items-center md:items-start space-y-3">
+        <a href="https://www.facebook.com/groups/706498349877012/?ref=share&mibextid=NSMWBT"
+           target="_blank" class="flex items-center gap-2 hover:text-orange-300">
+          <i data-lucide="facebook"></i> Facebook
+        </a>
+        <a href="#" class="flex items-center gap-2 hover:text-orange-300">
+          <i data-lucide="instagram"></i> Instagram
+        </a>
+        <a href="https://www.tiktok.com/@lwethuachievers.e?_r=1&_t=ZS-917Sm4uXtgL"
+           target="_blank" class="flex items-center gap-2 hover:text-orange-300">
+          <i data-lucide="tiktok"></i> TikTok
+        </a>
+      </div>
     </div>
+
     <div>
       <h3 class="text-lg font-bold mb-3">Find Us</h3>
-      <iframe class="w-64 h-48 rounded-lg" src="https://www.google.com/maps?q=Katlehong+Germiston&output=embed"></iframe>
+      <iframe class="w-64 h-48 rounded-lg"
+              src="https://www.google.com/maps?q=Katlehong+Germiston&output=embed"></iframe>
     </div>
   </div>
+
   <p class="text-center mt-8 text-sm">© 2025 Lwethu Achievers Edu Care Centre. All rights reserved.</p>
 </footer>
 
-<!-- WhatsApp Floating Button -->
+<!-- WhatsApp Button -->
 <a href="https://wa.me/27817626072" target="_blank"
    class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition">
   <i data-lucide="message-circle" class="w-6 h-6"></i>
 </a>
 
-<!-- ✅ Lightbox2 JS -->
+<!-- Lightbox JS -->
 <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox-plus-jquery.min.js"></script>
 
-<!-- ✅ Dynamic Gallery Loader -->
+<!-- Dynamic Image Loader + Video Modal + Mobile Menu -->
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const galleryGrid = document.getElementById('gallery-grid');
-    const totalImages = 140; // Change this to the number of images you have
+document.addEventListener("DOMContentLoaded", function () {
 
-    // Dynamically create gallery
-    for (let i = 1; i <= totalImages; i++) {
-      const link = document.createElement('a');
-      link.href = `gallery/${i}.jpeg`;
-      link.setAttribute('data-lightbox', 'lwethu-gallery');
-      link.setAttribute('data-title', `Gallery Image ${i}`);
+  /* ---------------------- DYNAMIC GALLERY ---------------------- */
+  const galleryGrid = document.getElementById('gallery-grid');
+  const totalImages = 140; // update if needed
 
-      const wrapper = document.createElement('div');
-      wrapper.className = 'w-full h-64 bg-white rounded-xl shadow-md overflow-hidden flex items-center justify-center';
+  for (let i = 1; i <= totalImages; i++) {
+    const link = document.createElement('a');
+    link.href = `gallery/${i}.jpeg`;
+    link.setAttribute('data-lightbox', 'lwethu-gallery');
+    link.setAttribute('data-title', `Gallery Image ${i}`);
 
-      const img = document.createElement('img');
-      img.src = `gallery/${i}.jpeg`;
-      img.loading = 'lazy';
-      img.alt = `Gallery Image ${i}`;
-      img.className = 'object-cover w-full h-full hover:scale-105 transform transition duration-300';
+    const wrapper = document.createElement('div');
+    wrapper.className =
+      'w-full h-64 bg-white rounded-xl shadow-md overflow-hidden flex items-center justify-center';
 
-      wrapper.appendChild(img);
-      link.appendChild(wrapper);
-      galleryGrid.appendChild(link);
-    }
+    const img = document.createElement('img');
+    img.src = `gallery/${i}.jpeg`;
+    img.loading = 'lazy';
+    img.className =
+      'object-cover w-full h-full hover:scale-105 transform transition duration-300';
 
-    // ✅ Initialize Lightbox options after dynamic load
-    lightbox.option({
-      resizeDuration: 300,
-      wrapAround: true,
-      fadeDuration: 300,
-      imageFadeDuration: 300,
-      disableScrolling: true
-    });
+    wrapper.appendChild(img);
+    link.appendChild(wrapper);
+    galleryGrid.appendChild(link);
+  }
 
-    // ✅ Initialize Lucide icons
-    lucide.createIcons();
+  lightbox.option({
+    resizeDuration: 300,
+    wrapAround: true,
+    fadeDuration: 300,
+    imageFadeDuration: 300,
+    disableScrolling: true,
+  });
 
-    // ✅ Mobile menu toggle
-    const menuBtn = document.getElementById('menu-btn');
-    const closeBtn = document.getElementById('close-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const overlay = document.getElementById('overlay');
+  lucide.createIcons();
 
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.remove('translate-x-full');
-      overlay.classList.remove('hidden');
-    });
+  /* ---------------------- MOBILE MENU ---------------------- */
+  const menuBtn = document.getElementById('menu-btn');
+  const closeBtn = document.getElementById('close-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const overlay = document.getElementById('overlay');
 
-    closeBtn.addEventListener('click', () => {
-      mobileMenu.classList.add('translate-x-full');
-      overlay.classList.add('hidden');
-    });
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.remove('translate-x-full');
+    overlay.classList.remove('hidden');
+  });
 
-    overlay.addEventListener('click', () => {
-      mobileMenu.classList.add('translate-x-full');
-      overlay.classList.add('hidden');
-    });
-  // ✅ FIXED VIDEO POPUP FUNCTIONS
+  closeBtn.addEventListener('click', () => {
+    mobileMenu.classList.add('translate-x-full');
+    overlay.classList.add('hidden');
+  });
+
+  overlay.addEventListener('click', () => {
+    mobileMenu.classList.add('translate-x-full');
+    overlay.classList.add('hidden');
+  });
+
+});
+
+/* ---------------------- VIDEO MODAL FUNCTIONS ---------------------- */
+
 function openVideoModal(src) {
   const modal = document.getElementById('videoModal');
   const player = document.getElementById('videoPlayer');
   const source = document.getElementById('videoSource');
 
   source.src = src;
-  player.load();   // refresh video properly
+  player.load();
   player.play();
   modal.classList.remove('hidden');
 }
@@ -262,34 +261,24 @@ function closeVideoModal() {
   player.pause();
   player.currentTime = 0;
   modal.classList.add('hidden');
-});
+}
 </script>
+
+<!-- VIDEO POPUP MODAL -->
 <div id="videoModal"
      class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
-  
+
   <div class="relative w-11/12 md:w-3/4 lg:w-1/2">
     <video id="videoPlayer" controls autoplay class="w-full rounded-lg shadow-lg">
       <source id="videoSource" src="" type="video/mp4">
     </video>
 
-    <button onclick="closeVideoModal()" 
+    <button onclick="closeVideoModal()"
             class="absolute -top-10 right-0 text-white text-4xl font-bold">
       ×
     </button>
   </div>
 </div>
 
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
