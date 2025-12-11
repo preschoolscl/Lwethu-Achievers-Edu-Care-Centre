@@ -105,33 +105,38 @@
   <h2 class="text-3xl font-bold text-center mb-10 text-teal-700">Gallery</h2>
   <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
 </section>section>
-  <!-- ✅ Video Gallery Section -->
-<section class="max-w-6xl mx-auto py-16 px-6">
+  <section class="max-w-6xl mx-auto py-16 px-6">
   <h2 class="text-3xl font-bold text-center mb-10 text-teal-700">Videos</h2>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
 
-    <!-- Video Item -->
-    <div class="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" onclick="openVideoModal('gallery/1.mp4')">
-      <video class="w-full h-64 object-cover rounded-lg">
+    <!-- Video 1 -->
+    <div class="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer"
+         onclick="openVideoModal('gallery/1.mp4')">
+      <video class="w-full h-64 object-cover rounded-lg" muted playsinline>
         <source src="gallery/1.mp4" type="video/mp4">
       </video>
     </div>
 
-    <div class="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" onclick="openVideoModal('gallery/2.mp4')">
-      <video class="w-full h-64 object-cover rounded-lg">
+    <!-- Video 2 -->
+    <div class="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer"
+         onclick="openVideoModal('gallery/2.mp4')">
+      <video class="w-full h-64 object-cover rounded-lg" muted playsinline>
         <source src="gallery/2.mp4" type="video/mp4">
       </video>
     </div>
 
-    <div class="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" onclick="openVideoModal('gallery/3.mp4')">
-      <video class="w-full h-64 object-cover rounded-lg">
+    <!-- Video 3 -->
+    <div class="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer"
+         onclick="openVideoModal('gallery/3.mp4')">
+      <video class="w-full h-64 object-cover rounded-lg" muted playsinline>
         <source src="gallery/3.mp4" type="video/mp4">
       </video>
     </div>
 
   </div>
 </section>
+
 
 <!-- Footer -->
 <footer id="footer" class="bg-teal-700 text-white py-10 mt-auto">
@@ -238,12 +243,15 @@
       mobileMenu.classList.add('translate-x-full');
       overlay.classList.add('hidden');
     });
-    // ✅ VIDEO POPUP FUNCTIONS
+  // ✅ FIXED VIDEO POPUP FUNCTIONS
 function openVideoModal(src) {
   const modal = document.getElementById('videoModal');
   const player = document.getElementById('videoPlayer');
+  const source = document.getElementById('videoSource');
 
-  player.src = src;
+  source.src = src;
+  player.load();   // refresh video properly
+  player.play();
   modal.classList.remove('hidden');
 }
 
@@ -252,20 +260,18 @@ function closeVideoModal() {
   const player = document.getElementById('videoPlayer');
 
   player.pause();
-  player.src = "";
+  player.currentTime = 0;
   modal.classList.add('hidden');
-}
-
-  });
+});
 </script>
-<!-- ✅ Video Popup Modal -->
 <div id="videoModal"
      class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
   
   <div class="relative w-11/12 md:w-3/4 lg:w-1/2">
-    <video id="videoPlayer" controls autoplay class="w-full rounded-lg shadow-lg"></video>
+    <video id="videoPlayer" controls autoplay class="w-full rounded-lg shadow-lg">
+      <source id="videoSource" src="" type="video/mp4">
+    </video>
 
-    <!-- Close Button -->
     <button onclick="closeVideoModal()" 
             class="absolute -top-10 right-0 text-white text-4xl font-bold">
       ×
@@ -273,8 +279,10 @@ function closeVideoModal() {
   </div>
 </div>
 
+
 </body>
 </html>
+
 
 
 
