@@ -183,9 +183,50 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* ---------------------- DYNAMIC GALLERY ---------------------- */
   const galleryGrid = document.getElementById('gallery-grid');
-  const totalImages = 244; // update if needed
+
+  /* ====================== ❤️ VALENTINES SECTION ====================== */
+
+  const valentinesHeading = document.createElement('h3');
+  valentinesHeading.className =
+    "col-span-full text-2xl font-bold text-center text-pink-600 mt-6 mb-6";
+  valentinesHeading.textContent = "❤️ Happy Valentines ❤️";
+
+  galleryGrid.appendChild(valentinesHeading);
+
+  const totalValentines = 51;
+
+  for (let i = 1; i <= totalValentines; i++) {
+    const link = document.createElement('a');
+    link.href = `Lwethu Valentines Photos/${i}.jpeg`;
+    link.setAttribute('data-lightbox', 'lwethu-gallery');
+    link.setAttribute('data-title', `Happy Valentines ${i}`);
+
+    const wrapper = document.createElement('div');
+    wrapper.className =
+      'w-full h-64 bg-white rounded-xl shadow-md overflow-hidden flex items-center justify-center';
+
+    const img = document.createElement('img');
+    img.src = `Lwethu Valentines Photos/${i}.jpeg`;
+    img.loading = 'lazy';
+    img.className =
+      'object-cover w-full h-full hover:scale-105 transform transition duration-300';
+
+    wrapper.appendChild(img);
+    link.appendChild(wrapper);
+    galleryGrid.appendChild(link);
+  }
+
+  /* ====================== MAIN GALLERY SECTION ====================== */
+
+  const mainHeading = document.createElement('h3');
+  mainHeading.className =
+    "col-span-full text-2xl font-bold text-center text-teal-700 mt-12 mb-6";
+  mainHeading.textContent = "Our School Activities";
+
+  galleryGrid.appendChild(mainHeading);
+
+  const totalImages = 244;
 
   for (let i = 1; i <= totalImages; i++) {
     const link = document.createElement('a');
@@ -208,6 +249,8 @@ document.addEventListener("DOMContentLoaded", function () {
     galleryGrid.appendChild(link);
   }
 
+  /* ====================== LIGHTBOX SETTINGS ====================== */
+
   lightbox.option({
     resizeDuration: 300,
     wrapAround: true,
@@ -218,7 +261,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   lucide.createIcons();
 
-  /* ---------------------- MOBILE MENU ---------------------- */
+  /* ====================== MOBILE MENU ====================== */
+
   const menuBtn = document.getElementById('menu-btn');
   const closeBtn = document.getElementById('close-btn');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -241,7 +285,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-/* ---------------------- VIDEO MODAL FUNCTIONS ---------------------- */
+/* ====================== VIDEO MODAL FUNCTIONS ====================== */
 
 function openVideoModal(src) {
   const modal = document.getElementById('videoModal');
@@ -264,6 +308,7 @@ function closeVideoModal() {
 }
 </script>
 
+
 <!-- VIDEO POPUP MODAL -->
 <div id="videoModal"
      class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
@@ -282,4 +327,5 @@ function closeVideoModal() {
 
 </body>
 </html>
+
 
