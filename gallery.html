@@ -259,26 +259,27 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  /* ====================== 🎂 LWETHU BIRTHDAY CELEBRATION ====================== */
+/* ====================== 🎂 LWETHU BIRTHDAY CELEBRATION ====================== */
 
-  const birthdayHeading = document.createElement('h3');
+const birthdayHeading = document.createElement('h3');
 
-  birthdayHeading.className =
-    "col-span-full text-2xl font-bold text-center text-pink-600 mt-12 mb-6";
+birthdayHeading.className =
+  "col-span-full text-2xl font-bold text-center text-pink-600 mt-12 mb-6";
 
-  birthdayHeading.textContent = "🎂 Lwethu Birthday Celebration 🎂";
+birthdayHeading.textContent = "🎂 Lwethu Birthday Celebration 🎂";
 
-  galleryGrid.appendChild(birthdayHeading);
+galleryGrid.appendChild(birthdayHeading);
 
-  const firstBirthdayPhoto = 249;
-  const lastBirthdayPhoto = 469;
+const firstBirthdayPhoto = 245;
+const lastBirthdayPhoto = 469;
 
-  for (let i = firstBirthdayPhoto; i <= lastBirthdayPhoto; i++) {
+for (let i = firstBirthdayPhoto; i <= lastBirthdayPhoto; i++) {
+
+    const imagePath = `./Lwethu Birthday Celebration/${i}.jpeg`;
 
     const link = document.createElement('a');
 
-   link.href = `Lwethu Birthday Celebration/${i}.jpeg`;
-
+    link.href = imagePath;
     link.setAttribute('data-lightbox', 'lwethu-gallery');
     link.setAttribute('data-title', `Lwethu Birthday Celebration ${i}`);
 
@@ -289,18 +290,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const img = document.createElement('img');
 
-    img.src = `Lwethu Birthday Celebration/${i}.jpeg`;
+    img.src = imagePath;
     img.loading = 'lazy';
+    img.alt = `Birthday celebration photo ${i}`;
 
     img.className =
       'object-cover w-full h-full hover:scale-105 transform transition duration-300';
+
+    // Display an error if the photo cannot load
+    img.onerror = function () {
+        this.style.display = 'none';
+
+        const errorMessage = document.createElement('p');
+
+        errorMessage.className = 'text-red-600 text-sm p-3 text-center';
+        errorMessage.textContent = `Image ${i} failed to load`;
+
+        wrapper.appendChild(errorMessage);
+
+        console.error('Failed to load image:', imagePath);
+    };
 
     wrapper.appendChild(img);
     link.appendChild(wrapper);
 
     galleryGrid.appendChild(link);
-  }
-
+}
 
   /* ====================== MAIN GALLERY SECTION ====================== */
 
